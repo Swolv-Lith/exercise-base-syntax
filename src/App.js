@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import './App.css'
+import UserInput from './UserInput/UserInput'
+import UserOutput from './UserOutput/UserOutput'
 
 function App() {
+  /**
+ * state = {
+ * username: 'NTZ Marshall'
+ * }
+ * 
+ * usrNmChangedHandler = eve => { this.setState({ username: eve.target.value }) }
+ */
+  const [ usrNmState, setUsrNmState ] = useState({
+    usrNmes: [
+      { name: 'Max'},
+      { name: 'Josh'}
+    ]
+  })
+  
+  const nameChangeHandler = (event) => {
+    setUsrNmState( {
+      usrNmes: [
+        { name: 'Max'},
+        { name: event.target.value}
+      ]
+    } )
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <UserInput changed={nameChangeHandler}/>
+      <UserOutput 
+      name1={usrNmState.usrNmes[0].name} 
+      name2={usrNmState.usrNmes[1].name}
+      name3='Margareth'
+      />    
     </div>
   );
 }
