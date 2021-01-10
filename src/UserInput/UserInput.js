@@ -16,7 +16,7 @@ const UserInput = props => {
   return (
     <div style={style}>
       <label>Username: </label>
-      <input type="text" onChange={props.changed}/>
+      <input id="input" type="text" onChange={props.changed} value={props.value}/>
     </div>
   )
 }
